@@ -47,8 +47,8 @@
 
     .hero-content h1 {
       font-size: 3.6rem;
-      letter-spacing: 0.5px;
       margin: 0 0 10px;
+      letter-spacing: 0.5px;
     }
 
     .hero-content p {
@@ -60,20 +60,19 @@
     /* ===== MAIN CONTENT ===== */
     .container {
       max-width: 900px;
-      margin-top: 20px;
-      margin: auto;
+      margin: 20px auto 0;
       padding: 40px 20px;
     }
 
     .specs {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px;
+      gap: 20px;
     }
 
     .card {
       background: #111;
-    padding: 16px;
+      padding: 20px;
       border-radius: 14px;
     }
 
@@ -85,7 +84,7 @@
 
     .card p {
       margin: 0;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: bold;
     }
 
@@ -110,26 +109,43 @@
       margin: 40px 0 20px;
     }
 
-    /* ===== MOBILE ===== */
+    /* ===== POSTER-FIRST MOBILE ===== */
     @media (max-width: 600px) {
 
-  .hero {
-    height: 100vh;
-  }
+      .hero {
+        height: 100vh;
+      }
 
-  .hero-content {
-    padding: 28px;
-  }
+      .hero-content {
+        padding: 28px;
+      }
 
-  .hero-content h1 {
-    font-size: 2.4rem;
-    line-height: 1.1;
-  }
+      .hero-content h1 {
+        font-size: 2.4rem;
+        line-height: 1.1;
+      }
 
-  .hero-content p {
-    font-size: 1rem;
-    margin-top: 6px;
-  }
+      .hero-content p {
+        font-size: 1rem;
+        margin-top: 6px;
+      }
+
+      .specs {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .card p {
+        font-size: 1.2rem;
+      }
+
+      .gallery {
+        margin-top: 40px;
+      }
     }
   </style>
 </head>
@@ -144,8 +160,9 @@
     </div>
   </section>
 
-  <!-- SPECS -->
+  <!-- SPECS + GALLERY -->
   <div class="container">
+
     <div class="specs">
       <div class="card">
         <h3>Engine</h3>
@@ -178,11 +195,11 @@
       </div>
     </div>
 
-    <!-- GALLERY -->
     <div class="gallery">
       <img src="m8_side.jpg" alt="BMW M8 side view">
       <img src="m8_rear.jpg" alt="BMW M8 rear view">
     </div>
+
   </div>
 
   <footer>
