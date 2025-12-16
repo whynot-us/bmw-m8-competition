@@ -44,9 +44,55 @@
       font-size: 1.4rem;
       font-weight: bold;
     }
-  </style>
+  </.hero {
+  height: 80vh;
+  background: url("m8.jpg") center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.overlay h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.overlay p {
+  color: #ccc;
+  font-size: 1.2rem;
+}
+>
 </head>
-<body>
+<<body>
+
+  <section class="hero">
+    <div class="overlay">
+      <h1>BMW M8 Competition</h1>
+      <p>Luxury. Power. Precision.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="specs">
+      <div class="card"><h3>Engine</h3><p>4.4L V8 Twin-Turbo</p></div>
+      <div class="card"><h3>Power</h3><p>625 hp</p></div>
+      <div class="card"><h3>0–100 km/h</h3><p>3.2 sec</p></div>
+      <div class="card"><h3>Top Speed</h3><p>305 km/h</p></div>
+      <div class="card"><h3>Drive</h3><p>M xDrive AWD</p></div>
+      <div class="card"><h3>Gearbox</h3><p>8-Speed M Steptronic</p></div>
+    </div>
+  </div>
+
+</body>
+>
   <div class="container">
     <h1>BMW M8 Competition</h1>
     <p class="subtitle">Luxury. Power. Precision.</p>
