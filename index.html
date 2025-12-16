@@ -17,10 +17,10 @@
       color: #fff;
     }
 
-    /* ===== HERO SECTION ===== */
+    /* ===== HERO ===== */
     .hero {
       height: 85vh;
-      background: url("m8.jpg") center / cover no-repeat;
+      background: url("m8.jpg") center 65% / cover no-repeat;
       position: relative;
     }
 
@@ -28,7 +28,10 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.45)
+      );
     }
 
     .hero-content {
@@ -53,7 +56,7 @@
       margin: 0;
     }
 
-    /* ===== CONTENT ===== */
+    /* ===== MAIN CONTENT ===== */
     .container {
       max-width: 900px;
       margin: auto;
@@ -69,7 +72,7 @@
     .card {
       background: #111;
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
     .card h3 {
@@ -82,6 +85,20 @@
       margin: 0;
       font-size: 1.4rem;
       font-weight: bold;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 60px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
     }
 
     footer {
@@ -146,6 +163,12 @@
         <h3>Gearbox</h3>
         <p>8-Speed M Steptronic</p>
       </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery">
+      <img src="m8_side.jpg" alt="BMW M8 side view">
+      <img src="m8_rear.jpg" alt="BMW M8 rear view">
     </div>
   </div>
 
