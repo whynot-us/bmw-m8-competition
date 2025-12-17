@@ -54,7 +54,23 @@
     .hero-content p {
       font-size: 1.2rem;
       color: #ccc;
-      margin: 0;
+      margin: 0 0 18px;
+    }
+
+    .cta {
+      display: inline-block;
+      padding: 12px 26px;
+      border: 1px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      width: fit-content;
+    }
+
+    .cta:hover {
+      background: #fff;
+      color: #000;
     }
 
     /* ===== MAIN CONTENT ===== */
@@ -91,7 +107,7 @@
     /* ===== GALLERY ===== */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       margin-top: 60px;
     }
@@ -109,7 +125,19 @@
       margin: 40px 0 20px;
     }
 
-    /* ===== POSTER-FIRST MOBILE ===== */
+    /* ===== SUBTLE BMW-STYLE ANIMATION ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MOBILE ===== */
     @media (max-width: 600px) {
 
       .hero {
@@ -127,7 +155,6 @@
 
       .hero-content p {
         font-size: 1rem;
-        margin-top: 6px;
       }
 
       .specs {
@@ -144,6 +171,7 @@
       }
 
       .gallery {
+        grid-template-columns: 1fr;
         margin-top: 40px;
       }
     }
@@ -152,50 +180,30 @@
 
 <body>
 
-  <!-- HERO -->
+  <!-- HERO (NO ANIMATION – IMPORTANT) -->
   <section class="hero">
     <div class="hero-content">
       <h1>BMW M8 Competition</h1>
       <p>Luxury. Power. Precision.</p>
+      <a href="https://www.bmw.com/en/models/m-series/m8.html" class="cta">
+        Explore BMW M
+      </a>
     </div>
   </section>
 
   <!-- SPECS + GALLERY -->
   <div class="container">
 
-    <div class="specs">
-      <div class="card">
-        <h3>Engine</h3>
-        <p>4.4L V8 Twin-Turbo</p>
-      </div>
-
-      <div class="card">
-        <h3>Power</h3>
-        <p>625 hp</p>
-      </div>
-
-      <div class="card">
-        <h3>0–100 km/h</h3>
-        <p>3.2 sec</p>
-      </div>
-
-      <div class="card">
-        <h3>Top Speed</h3>
-        <p>305 km/h</p>
-      </div>
-
-      <div class="card">
-        <h3>Drive</h3>
-        <p>M xDrive AWD</p>
-      </div>
-
-      <div class="card">
-        <h3>Gearbox</h3>
-        <p>8-Speed M Steptronic</p>
-      </div>
+    <div class="specs fade-up">
+      <div class="card"><h3>Engine</h3><p>4.4L V8 Twin-Turbo</p></div>
+      <div class="card"><h3>Power</h3><p>625 hp</p></div>
+      <div class="card"><h3>0–100 km/h</h3><p>3.2 sec</p></div>
+      <div class="card"><h3>Top Speed</h3><p>305 km/h</p></div>
+      <div class="card"><h3>Drive</h3><p>M xDrive AWD</p></div>
+      <div class="card"><h3>Gearbox</h3><p>8-Speed M Steptronic</p></div>
     </div>
 
-    <div class="gallery">
+    <div class="gallery fade-up">
       <img src="m8_side.jpg" alt="BMW M8 side view">
       <img src="m8_rear.jpg" alt="BMW M8 rear view">
     </div>
@@ -203,8 +211,27 @@
   </div>
 
   <footer>
-    Concept landing page • BMW M8 Competition
+    Concept landing page • BMW M8 Competition • Not affiliated with BMW AG
   </footer>
+
+  <!-- ===== ANIMATION SCRIPT ===== -->
+  <script>
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll(".fade-up").forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
