@@ -122,6 +122,7 @@
       user-select: none;
       -webkit-user-select: none;
       -ms-user-select: none;
+      cursor: pointer;
     }
 
     /* ===== ANIMATION ===== */
@@ -231,33 +232,38 @@
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
   </script>
 
-  <!-- LONG-PRESS FOOTER SECRET (NO TEXT SELECTION) -->
+  <!-- TRIPLE-TAP FOOTER SECRET -->
   <script>
     const SECRET_PASSWORD = "Enter";
     const footer = document.querySelector("footer");
     const secretImg = document.getElementById("secretImage");
-    let pressTimer = null;
 
-    footer.addEventListener("touchstart", (e) => {
-      e.preventDefault(); // stops text selection
-      pressTimer = setTimeout(() => {
+    let tapCount = 0;
+    let tapTimer = null;
+
+    footer.addEventListener("click", () => {
+      tapCount++;
+
+      if (!tapTimer) {
+        tapTimer = setTimeout(() => {
+          tapCount = 0;
+          tapTimer = null;
+        }, 1500);
+      }
+
+      if (tapCount === 3) {
+        tapCount = 0;
+        clearTimeout(tapTimer);
+        tapTimer = null;
+
         const entered = prompt("Enter access code:");
         if (entered !== null && entered.trim() === SECRET_PASSWORD) {
           secretImg.style.display = "block";
         }
-      }, 2000);
+      }
     });
 
-    footer.addEventListener("touchend", () => {
-      clearTimeout(pressTimer);
-      pressTimer = null;
-    });
-
-    footer.addEventListener("touchmove", () => {
-      clearTimeout(pressTimer);
-      pressTimer = null;
-    });
-
+    // Click secret image → open full + hide
     secretImg.addEventListener("click", () => {
       window.open("secret.jpg", "_blank");
       secretImg.style.display = "none";
