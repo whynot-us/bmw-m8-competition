@@ -120,6 +120,8 @@
       font-size: 0.9rem;
       margin: 40px 0 20px;
       user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
     /* ===== ANIMATION ===== */
@@ -229,14 +231,15 @@
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
   </script>
 
-  <!-- LONG-PRESS FOOTER SECRET -->
+  <!-- LONG-PRESS FOOTER SECRET (NO TEXT SELECTION) -->
   <script>
     const SECRET_PASSWORD = "Enter";
     const footer = document.querySelector("footer");
     const secretImg = document.getElementById("secretImage");
     let pressTimer = null;
 
-    footer.addEventListener("touchstart", () => {
+    footer.addEventListener("touchstart", (e) => {
+      e.preventDefault(); // stops text selection
       pressTimer = setTimeout(() => {
         const entered = prompt("Enter access code:");
         if (entered !== null && entered.trim() === SECRET_PASSWORD) {
