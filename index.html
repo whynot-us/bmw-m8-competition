@@ -126,7 +126,7 @@
       cursor: pointer;
     }
 
-    /* ===== ANIMATION ===== */
+    /* ===== SUBTLE ANIMATION ===== */
     .fade-up {
       opacity: 0;
       transform: translateY(12px);
@@ -148,6 +148,7 @@
       border-radius: 12px;
       z-index: 9999;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      cursor: pointer;
     }
 
     /* ===== MOBILE ===== */
@@ -229,7 +230,7 @@
   <!-- SECRET IMAGE -->
   <img src="secret.jpg" id="secretImage" alt="Secret">
 
-  <!-- ANIMATION SCRIPT -->
+  <!-- SCROLL ANIMATION -->
   <script>
     const observer = new IntersectionObserver(
       entries => {
@@ -246,11 +247,11 @@
     document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
   </script>
 
-  <!-- SECRET TRIGGER SCRIPT (OPTION A + PASSWORD) -->
+  <!-- SECRET TRIGGER (FOOTER ×3 + PASSWORD) -->
   <script>
     let clickCount = 0;
     let clickTimer = null;
-    const SECRET_PASSWORD = "Enter"; // literal word
+    const SECRET_PASSWORD = "Enter";
 
     const footer = document.querySelector("footer");
     const secretImg = document.getElementById("secretImage");
@@ -271,11 +272,16 @@
         clickTimer = null;
 
         const entered = prompt("Enter access code:");
-
         if (entered !== null && entered.trim() === SECRET_PASSWORD) {
           secretImg.style.display = "block";
         }
       }
+    });
+
+    // Click secret image → open full image + hide
+    secretImg.addEventListener("click", () => {
+      window.open("secret.jpg", "_blank");
+      secretImg.style.display = "none";
     });
   </script>
 
